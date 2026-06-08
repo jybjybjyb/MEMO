@@ -1,20 +1,14 @@
-
-- [基础操作](#基础操作)
-  - [**嵌入式 Python 包**](#嵌入式-python-包)
-  - [**Pystand Python 加壳**](#pystand-python-加壳)
-    - [**安装依赖**](#安装依赖)
-    - [**裁剪依赖**](#裁剪依赖)
-    - [**二进制压缩**](#二进制压缩)
-    - [**代码组织**](#代码组织)
-- [加密](#加密)
-  - [**基础加密**](#基础加密)
-  - [**高级加密**](#高级加密)
-- [简单方法](#简单方法)
+---
+toc:
+  depth_from: 1
+  depth_to: 2
+  ordered: false
+---
 
 
-# 基础操作
+# 1. 基础操作
 
-## **嵌入式 Python 包**
+## 1.1. **嵌入式 Python 包**
 
 当然是手工打包，现在 Python 3.5 以后，官方都会发布一个嵌入式 Python 包：
 
@@ -25,7 +19,7 @@
 
 在项目路径里建立一个新的 `runtime` 文件夹，把这些文件放进去，外层写个批处理，调用一下里面的 python.exe 基本就可以跑程序了。当然这样看起来很原始，所以精细一点的话，为这个 embedded python 做一个壳，直接加载里面 python3.dll 或者 python38.dll 来运行程序。
 
-## **Pystand Python 加壳**
+## 1.2. **Pystand Python 加壳**
 
 上面说的加壳我写了个例子了，叫做 PyStand：
 
@@ -85,7 +79,7 @@ app.exec_()
 
 根本不需要配置 C/C++ 编译环境。
 
-### **安装依赖**
+### 1.2.1. **安装依赖**
 
 我们需要一个对应版本号的 32 位的完整 python 3.8，然后新建个干净的虚拟环境：
 
@@ -103,7 +97,7 @@ app.exec_()
 
 拷贝到 PyStand.exe 所在目录的 site-packages 里面即可使用，注意多余的，没有依赖的东西无需拷贝，比如上图的 pip 包。
 
-### **裁剪依赖**
+### 1.2.2. **裁剪依赖**
 
 现在你已经把依赖的包拷贝到 PyStand 的 site-packages 里了，比如 PyQt5 这个包：
 
@@ -135,11 +129,11 @@ app.exec_()
 
 手工裁剪比无脑 PyInstaller 可靠的多，不但可以精细裁剪，每一步你都清晰的知道是怎么来的，出了问题你也知道该怎么回退。
 
-### **二进制压缩**
+### 1.2.3. **二进制压缩**
 
 还可以用 upx 压缩一些比较大的文件，但 runtime 下面的 python3.dll, python38.dll, [vcruntime140.dll](https://www.zhihu.com/search?q=vcruntime140.dll&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra=%7B%22sourceType%22%3A%22answer%22%2C%22sourceId%22%3A2336654649%7D) 不能压缩，而 PyQt5 里的 QtCore, QtWidgets, QtGUI 不能压缩，一边测试一边压缩，还可以进一步精简。
 
-### **代码组织**
+### 1.2.4. **代码组织**
 
 你有很多 py 代码，可以在 PyStand 下面新建一个 script 目录：
 
@@ -171,15 +165,15 @@ main.main()
 比如这样，运行 PyQt-Demo.exe 它会根据自身的名字，正确的找到 [PyQt-Demo.int](https://link.zhihu.com/?target=http%3A//pyqt-demo.int/) 文件并执行。
 
 
-# 加密
+# 2. 加密
 
-## **基础加密**
+## 2.1. **基础加密**
 
 要求不高的话，上面你将 script 目录内的 .py 文件打包成 script.egg，直接就可以发布了，至少不会满目录的 .py 文件。要求高一点的话，把 .py 先转换成 .pyc 再压缩成 script.egg，然后把关键几个模块用 cython 之类的工具转换成 .pyd 即可。
 
 上面基础加密基本够用了，个人开发者可以就此止步，如果你是一个团队，要发布面向百万以上用户产品级的东西，追求比 PyInstaller 更安全的加密方式可以继续往下。
 
-## **高级加密**
+## 2.2. **高级加密**
 
 接下来技巧我在 Python 2 时代都做过，你可以视精力酌情添加：
 
@@ -215,7 +209,7 @@ main.main()
 
 这个 PyStand.exe 是窗口程序，那么出错了怎么看 [exception](https://www.zhihu.com/search?q=exception&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra=%7B%22sourceType%22%3A%22answer%22%2C%22sourceId%22%3A2336654649%7D) 呢？可以打开一个 cmd.exe，用 cmd.exe 启动 PyStand，就能看到错误了，你自己也可以记录下日志，catch 一下内部的 exception。
 
-# 简单方法
+# 3. 简单方法
 
 一、关于对比PyInstaller的几个类似问题：
 

@@ -1,19 +1,12 @@
-# 常用命令- [常用命令](#常用命令)
-- [常用命令- 常用命令](#常用命令--常用命令)
-- [命令 (CLI)](#命令-cli)
-- [安装](#安装)
-  - [一行命令安装 WSL2](#一行命令安装-wsl2)
-  - [在配置好的 WSL2 中安装 OpenClaw](#在配置好的-wsl2-中安装-openclaw)
-  - [权限](#权限)
-  - [代理](#代理)
-  - [手动安装 Node.js（绕开拦截，100% 成功率）](#手动安装-nodejs绕开拦截100-成功率)
-  - [在线搜索](#在线搜索)
-  - [模型](#模型)
+---
+toc:
+  depth_from: 1
+  depth_to: 2
+  ordered: false
+---
 
 
-
-
-# 命令 (CLI)
+# 1. 命令 (CLI)
 
 OpenClaw 的操作主要通过终端命令完成，以下是你日常最可能用到的：
 
@@ -36,8 +29,8 @@ OpenClaw 的强大在于“技能（Skills）”，你可以通过命令扩展�
 * **`openclaw agent --message "执行任务"`**：直接在终端给 AI 下指令，无需通过聊天软件。
 
 
-# 安装
-## 一行命令安装 WSL2
+# 2. 安装
+## 2.1. 一行命令安装 WSL2
 
 **1. 以管理员身份运行 PowerShell**
 按下 `Win` 键，搜索“**PowerShell**”，然后选择“**以管理员身份运行**”。
@@ -61,7 +54,7 @@ wsl --install
 
 ---
 
-## 在配置好的 WSL2 中安装 OpenClaw
+## 2.2. 在配置好的 WSL2 中安装 OpenClaw
 
 
 
@@ -71,7 +64,7 @@ curl -fsSL https://openclaw.ai/install.sh | bash
 
 等待它自动下载并配置好环境，最后同样运行 `openclaw onboard` 来启动初始化向导即可。
 
-## 权限
+## 2.3. 权限
 - 完整的 Linux 环境权限（100% 自由）
    在那个黑色的 Ubuntu 终端里，OpenClaw 拥有像在一台独立 Linux 服务器上一样的完整权限：
    * **最高权限 (Root)：** 它可以执行 `sudo` 命令（前提是你授予了权限或免密），安装任何软件包、配置网络、运行后台守护进程。
@@ -104,7 +97,7 @@ curl -fsSL https://openclaw.ai/install.sh | bash
    总而言之，它拥有完成绝大多数日常自动化、编程、文件处理任务的所有正常权限，是一个非常完美且强大的运行状态！
 
 
-## 代理
+## 2.4. 代理
 
 在默认的 **NAT 模式**下，WSL2 就像是一台通过“虚拟路由器”连在你 Windows 电脑上的**另一台独立电脑**。
 * 当你在 Windows 的代理软件里设置监听 `localhost`（即 `127.0.0.1`）时，它只允许 Windows 本机访问。
@@ -163,7 +156,7 @@ curl -fsSL https://openclaw.ai/install.sh | bash
    如果有类似 `HTTP/2 200` 或者返回了网页代码，说明网络已经完全打通。
 
 
-## 手动安装 Node.js（绕开拦截，100% 成功率）
+## 2.5. 手动安装 Node.js（绕开拦截，100% 成功率）
 
 既然 `apt` 包管理器和代理软件“八字不合”，那我们就**不用它了**。
 OpenClaw 脚本其实非常聪明：**如果它检测到系统里已经安装了 Node.js（22 及以上版本），它就会直接跳过下载步骤。**
@@ -203,7 +196,7 @@ curl -fsSL https://openclaw.ai/install.sh | bash
 
 
 
-## 在线搜索
+## 2.6. 在线搜索
 
 在 https://searx.space/ 中寻找开源聚合搜索
 
@@ -217,7 +210,7 @@ SEARXNG_FORMAT=json
 
 ```
 
-## 模型
+## 2.7. 模型
 
 在 ~/.openclaw/.env 文件中添加：
 

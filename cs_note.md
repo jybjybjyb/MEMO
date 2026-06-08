@@ -1,87 +1,18 @@
-- [Zotero](#zotero)
-  - [一键抓取doi](#一键抓取doi)
-  - [设置Sci-Hub作为PDF解析器](#设置sci-hub作为pdf解析器)
-  - [脚本](#脚本)
-    - [批量将语言设置为en（英语）](#批量将语言设置为en英语)
-  - [将文献的题目大小写修改为句首字母大写（Sentence case）](#将文献的题目大小写修改为句首字母大写sentence-case)
-    - [将条目的题目大小写转为词首字母大写（Title Case）](#将条目的题目大小写转为词首字母大写title-case)
-    - [将条目的题目大小写转为部分全部小写](#将条目的题目大小写转为部分全部小写)
-    - [将Extra字段清空](#将extra字段清空)
-    - [将作者大小写修改词首字母大写](#将作者大小写修改词首字母大写)
-    - [批量删除（合并）重复文献](#批量删除合并重复文献)
-    - [批量删除tags](#批量删除tags)
-- [Ubuntu 服务器](#ubuntu-服务器)
-  - [Complier](#complier)
-  - [VNC](#vnc)
-    - [vnc ssh隧道](#vnc-ssh隧道)
-  - [中文显示支持](#中文显示支持)
-  - [nividia](#nividia)
-  - [查看发行版](#查看发行版)
-  - [证书错误](#证书错误)
-  - [后台执行](#后台执行)
-  - [自动登录](#自动登录)
-  - [VNC for Xfce](#vnc-for-xfce)
-- [Miner](#miner)
-  - [网络](#网络)
-    - [linux](#linux)
-    - [windows](#windows)
-  - [nvidia linux 超频](#nvidia-linux-超频)
-    - [ubuntu](#ubuntu)
-    - [安装gwe](#安装gwe)
-  - [windwos bat自启动文件](#windwos-bat自启动文件)
-- [Aliyun 服务器](#aliyun-服务器)
-  - [密码帐号](#密码帐号)
-  - [frp](#frp)
-    - [frps.ini](#frpsini)
-    - [frpc.ini](#frpcini)
-  - [frp开机自启动](#frp开机自启动)
-- [Opencv](#opencv)
-  - [编译选项](#编译选项)
-  - [3rd包](#3rd包)
-  - [安装opencv-contrib](#安装opencv-contrib)
-- [wsl Arch](#wsl-arch)
-- [manjaro](#manjaro)
-  - [初始配置](#初始配置)
-  - [rc-local](#rc-local)
-- [Raspi](#raspi)
-  - [初始配置](#初始配置-1)
-  - [ubuntu sever](#ubuntu-sever)
-  - [升级固件 U盘启动](#升级固件-u盘启动)
-  - [添加用户到sudoer列表中](#添加用户到sudoer列表中)
-  - [VNC XRDP](#vnc-xrdp)
-  - [配置smb](#配置smb)
-  - [硬盘挂载](#硬盘挂载)
-    - [权限管理](#权限管理)
-    - [nofail](#nofail)
-    - [示例](#示例)
-  - [配置aria2](#配置aria2)
-  - [秘钥](#秘钥)
-  - [Dlna](#dlna)
-- [Python](#python)
-  - [embeded python](#embeded-python)
-  - [虚拟环境打包  pyinstaller](#虚拟环境打包--pyinstaller)
-  - [打包pyd](#打包pyd)
-- [Docker](#docker)
-  - [](#)
-  - [Docker Hub](#docker-hub)
-  - [数据卷容器（Data volume containers）](#数据卷容器data-volume-containers)
-  - [数据卷（Data volumes）](#数据卷data-volumes)
-  - [Docker 命令](#docker-命令)
-  - [Docker Aira](#docker-aira)
-- [CZU服务器centos](#czu服务器centos)
-  - [服务器密码](#服务器密码)
-    - [todesk](#todesk)
-  - [vmware](#vmware)
-    - [VMware Fusion Player 13 – Personal Use](#vmware-fusion-player-13--personal-use)
+---
+toc:
+  depth_from: 1
+  depth_to: 2
+  ordered: false
+---
 
 
-# Zotero
+# 1. Zotero
 
-## 一键抓取doi
+## 1.1. 一键抓取doi
 
 从GitHub上下载最新版本
 
-## 设置Sci-Hub作为PDF解析器
+## 1.2. 设置Sci-Hub作为PDF解析器
 
 打开Zotero的首选项，进入Advanced-->Config Editor
 
@@ -103,9 +34,9 @@ extensions.zotero.findPDFs.resolvers
 }
 ```
 
-## 脚本
+## 1.3. 脚本
 
-### 批量将语言设置为en（英语）
+### 1.3.1. 批量将语言设置为en（英语）
 
 ```
 zoteroPane = Zotero.getActiveZoteroPane();
@@ -124,7 +55,7 @@ rn+=1;
 return 
 ```
 
-## 将文献的题目大小写修改为句首字母大写（Sentence case）
+## 1.4. 将文献的题目大小写修改为句首字母大写（Sentence case）
 
 ```
 
@@ -145,7 +76,7 @@ return n + '个条目完成';
 
 ```
 
-### 将条目的题目大小写转为词首字母大写（Title Case）
+### 1.4.1. 将条目的题目大小写转为词首字母大写（Title Case）
 
 ```
 var items = ZoteroPane.getSelectedItems();
@@ -183,7 +114,7 @@ function titleCase(str) {
 };
 ```
 
-### 将条目的题目大小写转为部分全部小写
+### 1.4.2. 将条目的题目大小写转为部分全部小写
 
 ```
 var items = ZoteroPane.getSelectedItems();
@@ -203,7 +134,7 @@ return n + '个条目的题目大小写转为全部大写，请查实。';
 
 ```
 
-### 将Extra字段清空
+### 1.4.3. 将Extra字段清空
 
 ```
 zoteroPane = Zotero.getActiveZoteroPane();
@@ -216,7 +147,7 @@ await item.saveTx();
 return "Extra已清除完成";
 ```
 
-### 将作者大小写修改词首字母大写
+### 1.4.4. 将作者大小写修改词首字母大写
 
 ```
 
@@ -258,7 +189,7 @@ function titleCase(str) {    var newStr = str.split(" ");    for(var i = 0; i<ne
 }
 ```
 
-### 批量删除（合并）重复文献
+### 1.4.5. 批量删除（合并）重复文献
 
 ```
 
@@ -270,7 +201,7 @@ Zotero_Duplicates_Pane.merge();
 }
 ```
 
-### 批量删除tags
+### 1.4.6. 批量删除tags
 
 ```
 
@@ -287,27 +218,27 @@ return n + '个tag清空';
 
 ```
 
-# Ubuntu 服务器
+# 2. Ubuntu 服务器
 
-## Complier
+## 2.1. Complier
 
 `sudo apt install build-essential crossbuild-essential-arm64 crossbuild-essential-armel crossbuild-essential-armhf crossbuild-essential-riscv64 crossbuild-essential-amd64`
 
-## VNC
+## 2.2. VNC
 
-### vnc ssh隧道
+### 2.2.1. vnc ssh隧道
 
 ```
 ssh -L 5901:127.0.0.1:5901 -N -f -l jiang 192.168.3.20
 ```
 
-## 中文显示支持
+## 2.3. 中文显示支持
 
 ```
 sudo apt-get install ttf-wqy-zenhei
 ```
 
-## nividia
+## 2.4. nividia
 
 ```
 nividia-smi
@@ -321,25 +252,25 @@ cd /usr/src
 sudo reboot
 ```
 
-## 查看发行版
+## 2.5. 查看发行版
 
 ```
 lsb_release -a
 ```
 
-## 证书错误
+## 2.6. 证书错误
 
 ```
 sudo apt-get install -y ca-certificates
 ```
 
-## 后台执行
+## 2.7. 后台执行
 
 ```
 nohup command &
 ```
 
-## 自动登录
+## 2.8. 自动登录
 
 在终端模拟器使用命令
 
@@ -357,7 +288,7 @@ autologin-user=yuanfei #请替换为自己的用户名
 autologin-user-timeout=0
 ```
 
-## VNC for Xfce
+## 2.9. VNC for Xfce
 
  如果没有图形界面
 
@@ -455,13 +386,13 @@ ssh -L 5901:127.0.0.1:5901 -N -f -l username server_ip_address
 ssh -L 5901:127.0.0.1:5901 -N -f -l jiang 192.168.3.102
 ```
 
-# Miner
+# 3. Miner
 
-## 网络
+## 3.1. 网络
 
-### linux
+### 3.1.1. linux
 
-### windows
+### 3.1.2. windows
 
 1 先在网络里面改变wifi和有线跃点，使得wifi和有线都生效
 2 关闭自动配置，手动写ip，不写路由（防止每次自动生成0.0.0.0路由）
@@ -477,7 +408,7 @@ route add 16.162.79.108 mask 255.255.255.255 10.168.1.1 -p
 route add 0.0.0.0 mask 0.0.0.0 192.168.3.1 metric 5  -p 
 ```
 
-## nvidia linux 超频
+## 3.2. nvidia linux 超频
 
 生成xorg
 
@@ -485,13 +416,13 @@ route add 0.0.0.0 mask 0.0.0.0 192.168.3.1 metric 5  -p
 sudo nvidia-xconfig
 ```
 
-### ubuntu
+### 3.2.1. ubuntu
 
 ```
 sudo nvidia-xconfig -a --allow-empty-initial-configuration --cool-bits=28
 ```
 
-### 安装gwe
+### 3.2.2. 安装gwe
 
 ```
 sudo apt install git meson python3-pip libcairo2-dev libgirepository1.0-dev libglib2.0-dev libdazzle-1.0-dev gir1.2-gtksource-3.0 gir1.2-appindicator3-0.1 python3-gi-cairo appstream-util
@@ -520,7 +451,7 @@ yay -S gwe
 
 直接在图形界面下超频，记得回车
 
-## windwos bat自启动文件
+## 3.3. windwos bat自启动文件
 
 ```
 @echo off
@@ -539,9 +470,9 @@ or：
 Win+R，在打开的运行程序中输入 shell:startup，回车
 ```
 
-# Aliyun 服务器
+# 4. Aliyun 服务器
 
-## 密码帐号
+## 4.1. 密码帐号
 
 ```
 114.55.174.213
@@ -549,9 +480,9 @@ root
 zaqxsw123!
 ```
 
-## frp
+## 4.2. frp
 
-### frps.ini
+### 4.2.1. frps.ini
 
 ```
 [common]
@@ -568,7 +499,7 @@ token=zaqxsw123!
 ./frps -c ./frps.ini
 ```
 
-### frpc.ini
+### 4.2.2. frpc.ini
 
 ```
 ### 2080 ti
@@ -640,7 +571,7 @@ remote_port=43389
 
 ```
 
-## frp开机自启动
+## 4.3. frp开机自启动
 
 新建一个文件内容如下：
 
@@ -679,9 +610,9 @@ sudo systemctl start frpc.service
 sudo systemctl status frpc.service
 ```
 
-# Opencv
+# 5. Opencv
 
-## 编译选项
+## 5.1. 编译选项
 
 world
 
@@ -698,7 +629,7 @@ Python 3:
     
 ```
 
-## 3rd包
+## 5.2. 3rd包
 
 ```
 ping raw.githubusercontent.com
@@ -709,7 +640,7 @@ sudo nano /etc/hosts
 ping值 raw.githubusercontent.com
 ```
 
-## 安装opencv-contrib
+## 5.3. 安装opencv-contrib
 
 树莓派
 
@@ -793,7 +724,7 @@ sudo apt install libopencv-dev python3-opencv
 
 ```
 
-# wsl Arch
+# 6. wsl Arch
 
 打开 PowerShell 并运行,将 WSL 2 设置为默认版本
 
@@ -829,9 +760,9 @@ pacman -S base-devel git zsh cmake net-tools
 
 退出并重新打开 Arch Linux
 
-# manjaro
+# 7. manjaro
 
-## 初始配置
+## 7.1. 初始配置
 
 ```
 sudo pacman-mirrors -i -c China -m rank
@@ -879,7 +810,7 @@ export XMODIFIERS=“@im=fcitx”
 
 ```
 
-## rc-local
+## 7.2. rc-local
 
 虽然 Arch Linux 没有默认支持 rc-local.service 服务，但是我们可以手动安装这个服务并设置开机启动：
 
@@ -905,9 +836,9 @@ sudo chmod 755 /etc/rc.local
 systemctl status rc-local.service
 ```
 
-# Raspi
+# 8. Raspi
 
-## 初始配置
+## 8.1. 初始配置
 
 1. 在写入新系统镜像后，不要弹出SD卡；在其中新建ssh的空文件。（不要后缀名）
 1. 2022-4之前 系统用户名：pi 密码：raspberry
@@ -931,7 +862,7 @@ echo '明文密码' | openssl passwd -6 -stdin
 $6$O/bGVyH9YxcfCXBL$RTnaolLfeS9KDVOPqaox8/ZdByWlBmx.KwAUg39JnRr8cXMIa09o2rSDFaGlpcaUS9XPiRvSpW1jXwsvKK4eS/
 ```
 
-## ubuntu sever
+## 8.2. ubuntu sever
 
 ```
 # system-boot/network-config
@@ -968,7 +899,7 @@ sudo apt install kubuntu-desktop
 
 ```
 
-## 升级固件 U盘启动
+## 8.3. 升级固件 U盘启动
 
 ```
 sudo apt-get update && sudo apt upgrade
@@ -978,7 +909,7 @@ sudo rpi-eeprom-update
 sudo rpi-eeprom-update -a
 ```
 
-## 添加用户到sudoer列表中
+## 8.4. 添加用户到sudoer列表中
 
 ```
 nano /etc/sudoers
@@ -989,7 +920,7 @@ nano /etc/sudoers
 
 一定加在最后
 
-## VNC XRDP
+## 8.5. VNC XRDP
 
 XRDP
 
@@ -1016,7 +947,7 @@ vncserver -kill :1
 vncserver -geometry 1440x900 -dpi 96 :1
 ```
 
-## 配置smb
+## 8.6. 配置smb
 
 ```
 sudo apt-get install samba samba-common-bin
@@ -1056,7 +987,7 @@ service smbd restart //重启samba服务
 //即可进行连接测试（在运行窗口中输入\\ip即可访问）
 ```
 
-## 硬盘挂载
+## 8.7. 硬盘挂载
 
 ```
 sudo blkid
@@ -1076,7 +1007,7 @@ sudo blkid
 sudo nano /etc/fstab // 编辑设备管理,在最后一行添加你要挂载的设备
 ```
 
-### 权限管理
+### 8.7.1. 权限管理
 
 ```
 umask, fmask, dmask, uid, gid
@@ -1090,11 +1021,11 @@ id #查看uid和gid
 /dev/sda3      /media/program    ntfs defaults,uid=1000,gid=1000     0       0
 ```
 
-### nofail
+### 8.7.2. nofail
 
 即使boot阶段没有接入移动硬盘，也能正常启动。
 
-### 示例
+### 8.7.3. 示例
 
 ```
 UUID=38E28323E282E50A /media/pi ntfs defaults,nofail,x-systemd.device-timeout=1,noatime 0 0
@@ -1129,7 +1060,7 @@ defaults – 使用文件系统的默认挂载参数，例如 ext4 的默认参�
 
 ```
 
-## 配置aria2
+## 8.8. 配置aria2
 
 ```
 sudo apt install -y aria2 
@@ -1252,7 +1183,7 @@ sudo systemctl enable nginx
 
 用浏览器访问树莓派IP下的aira-ng，即：<http://192.168.1.xxx/aira-ng> 然后在系统设置点击AriaNg设置 –> 全局 –> 设置语言为中文 –> 点击RPC–>修改为 rpc 密钥：secret
 
-## 秘钥
+## 8.9. 秘钥
 
 ```
 ssh-keygen
@@ -1261,7 +1192,7 @@ cat id_rsa.pub >> authorized_keys
 sudo service sshd restart
 ```
 
-## Dlna
+## 8.10. Dlna
 
 ```
 //ntfs
@@ -1294,9 +1225,9 @@ sudo apt-get remove --purge minidlna
 
 
 
-# Python
+# 9. Python
 
-## embeded python
+## 9.1. embeded python
 
 1. 下载 embed 版 Python 并解压： <https://www.python.org/downloads/windows/>
 2. 下载 get-pip 并放入 embed 版 Python 文件夹中： <https://pip.pypa.io/en/latest/installing/>
@@ -1307,7 +1238,7 @@ sudo apt-get remove --purge minidlna
 @.\python.exe .\程序的入口文件.py
 @pause
 
-## 虚拟环境打包  pyinstaller
+## 9.2. 虚拟环境打包  pyinstaller
 
 ```
 # 第一次
@@ -1347,7 +1278,7 @@ __import__('pkg_resources.extern.packaging.markers')
 __metaclass__ = type
 ```
 
-## 打包pyd
+## 9.3. 打包pyd
 
 ```
 # build_pyd.py
@@ -1373,7 +1304,7 @@ setup(
 python build_pyd.py build_ext --inplace
 ```
 
-# Docker
+# 10. Docker
 
 ##
 
@@ -1383,14 +1314,14 @@ nvidia
 docker run --gpus all -it tensorflow/tensorflow:latest-gpu bash
 ```
 
-## Docker Hub
+## 10.2. Docker Hub
 
 ```
 jybjybjyb
 fe1d42c8-262f-4653-a930-9e0d0299c10a
 ```
 
-## 数据卷容器（Data volume containers）
+## 10.3. 数据卷容器（Data volume containers）
 
 ```
 # 创建一个命名的数据卷容器 dbdata
@@ -1404,7 +1335,7 @@ docker run -it --volumes-from dbdata --name db1 ubuntu
 使用--volumes-from参数所挂载数据卷的容器自身并不需要保持在运行状态
 如果删除了挂载的容器（包括 dbdata、db1 和 db2），数据卷并不会被自动删除。如果要删除一个数据卷，必须在删除最后一个还挂载着它的容器时使用 docker rm -v命令来指定同时删除关联的容器。这可以让用户在容器之间升级和移动数据卷。
 
-## 数据卷（Data volumes）
+## 10.4. 数据卷（Data volumes）
 
 在用 docker run 命令的时候，使用 -v 标记来创建一个数据卷并挂载到容器里。在一次 run 中多次使用可以挂载多个数据卷。
 
@@ -1412,7 +1343,7 @@ docker run -it --volumes-from dbdata --name db1 ubuntu
 docker run -d -v /test:/
 ```
 
-## Docker 命令
+## 10.5. Docker 命令
 
 ```
 // root 启动（默认是UID 1000，啥权限没有）
@@ -1438,7 +1369,7 @@ docker exec -it {{containerName or containerID}} bash
 docker exec -d {{containerName or containerID}} bash
 ```
 
-## Docker Aira
+## 10.6. Docker Aira
 <https://p3terx.com/archives/docker-aria2-pro.html>
 
 ```
@@ -1462,7 +1393,7 @@ docker run -d \
 ```
 
 
-# CZU服务器centos
+# 11. CZU服务器centos
 
 user: root
 
@@ -1472,7 +1403,7 @@ user: eda
 
 passwd: 4444
 
-## 服务器密码
+## 11.1. 服务器密码
 
 bihui
 
@@ -1482,14 +1413,14 @@ caichengjie
 
 ccj123456
 
-### todesk
+### 11.1.1. todesk
 
 !Jyb86131
 
 
-## vmware
+## 11.2. vmware
 
-### VMware Fusion Player 13 – Personal Use
+### 11.2.1. VMware Fusion Player 13 – Personal Use
 
 COMPONENT EXPIRATION DATE LICENSE KEYS
 VMware Fusion Player 13 – Personal Use  5128K-4ALD1-081Q2-0HC8K-C0UK4
